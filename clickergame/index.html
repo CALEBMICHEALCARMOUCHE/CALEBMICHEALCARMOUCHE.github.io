@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clicker</title>
+    <style>
+        img {
+            width: 20%;
+        }
+
+    </style>
+</head>
+<body>
+    <p id="score">0</p>
+    <p id="upgradeCost">0</p>
+    <img id="duck" src="https://i.natgeofe.com/k/327b01e8-be2e-4694-9ae9-ae7837bd8aea/mallard-male-swimming.jpg" >
+   <img id = "autoclick" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVKN03WQenk6TPbQcoljMTdbMaoZg0x0t7eMcDGsfDRJK47Owq:https://lookaside.instagram.com/seo/google_widget/crawler/%3Fmedia_id%3D3609944076934865485&s" >
+    <img id="upgrade" src="https://cdn.displate.com/artwork/270x380/2023-06-01/626594b4b6b7b8661ef2c5f6bb3d2e93_5a8c532028def1693013b63d51f42603.jpg" >
+</body>
+</html>
+<script>
+    let score = 0;
+    let multiplier = 1;
+    let costOfUpgrade = 10
+    let isAutoclicking = false 
+
+    const clickSound = new Audio('https://commondatastorage.googleapis.com/codeskulptor-assets/Collision8-Bit.ogg');
+    const backgroundSound = new Audio("https://commondatastorage.googleapis.com/codeskulptor-assets/Epoq-Lepidoptera.ogg")
+
+    document.getElementById('duck').addEventListener('click', scoreGoUp);
+
+    function updateScoreLooks(){
+        document.getElementById("score").innerText = score + " POINTS (" + multiplier + "x)"
+        document.getElementById("upgradeCost").innerText = costOfUpgrade + " POINTS TO UPGRADE BRO"
+    }
+
+    updateScoreLooks()
+
+    function scoreGoUp(){
+        score += multiplier
+        const clickSound = new Audio('https://commondatastorage.googleapis.com/codeskulptor-assets/Collision8-Bit.ogg');
+        clickSound.play()
+        updateScoreLooks()
+    }
+  
+    // upgrade 
+
+    function upgrade(noError) {
+        if (score >= costOfUpgrade) {
+            score = score - costOfUpgrade
+            multiplier *= 2
+            costOfUpgrade *= Math.sqrt(multiplier)
+            updateScoreLooks()
+        } else if (!noError) {
+            alert("You are too broke you need " + (costOfUpgrade - score) + " more points!")
+        }
+    }
+
+    document.getElementById('upgrade').addEventListener('click', upgrade);
+    
+    function autoclick() {
+        if (isAutoclicking) {
+            scoreGoUp()
+            upgrade(true)
+        }
+    }
+
+    setInterval(autoclick, 0.01)
+
+    function toggleAuto() {
+        isAutoclicking = !isAutoclicking
+    }
+
+    document.getElementById('autoclick').addEventListener('click', toggleAuto);
+    
+        // Function to add a subtitle to an image element
+    function addSubtitle(imageElement, captionText) {
+        const container = document.createElement('div');
+        container.classList.add('image-container');
+
+        imageElement.parentNode.insertBefore(container, imageElement);
+        container.appendChild(imageElement);
+
+        const subtitle = document.createElement('div');
+        subtitle.classList.add('subtitle');
+        subtitle.textContent = captionText;
+
+        container.appendChild(subtitle);
+    }
+
+    addSubtitle(document.getElementById("autoclick"), "AUTOCLICK")
+    addSubtitle(document.getElementById("upgrade"), "UPGRADE")
+    addSubtitle(document.getElementById("duck"), "GET DAT MONEY")
+
+    backgroundSound.loop = true
+    backgroundSound.volume = .5
+    backgroundSound.play().catch(e => console.log(e));
+
+    </script>

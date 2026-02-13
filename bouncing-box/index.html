@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>clicker</title>
+    <style>
+      img {
+        width: 80px;
+        height: 80px;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <img
+      id="box"
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVKN03WQenk6TPbQcoljMTdbMaoZg0x0t7eMcDGsfDRJK47Owq:https://lookaside.instagram.com/seo/google_widget/crawler/%3Fmedia_id%3D3609944076934865485&s"
+    />
+
+    <canvas id="canvas" height="10" width="10"></canvas>
+  </body>
+</html>
+<script>
+  const speed = 200; // in pixels
+  const updateTime = 1 / 60;
+
+  const sizeX = 100;
+  const sizeY = 100;
+
+  const clickSound = new Audio(
+    "https://commondatastorage.googleapis.com/codeskulptor-assets/Collision8-Bit.ogg",
+  );
+
+  let canvas = document.getElementById("canvas");
+  let ctx = canvas.getContext("2d");
+
+  let box = document.getElementById("box");
+  let myBoxes = [];
+
+  function addNewBox() {
+    let newBox = {
+      directionX: 1,
+      directionY: 1,
+      positionX: window.innerWidth * 0.5,
+      positionY: window.innerHeight * 0.5,
+    };
+
+    if (Math.random() > 0.5) {
+      newBox.directionX = -1;
+    }
+
+    if (Math.random() > 0.5) {
+      newBox.directionY = -1;
+    }
+
+    myBoxes.push(newBox);
+  }
+
+  function playCollide() {
+    const clickSound = new Audio(
+      "https://commondatastorage.googleapis.com/codeskulptor-assets/Collision8-Bit.ogg",
+    );
+
+    clickSound.play();
+  }
+
+  function update() {
+    const windowSizeX = window.innerWidth;
+    const windowSizeY = window.innerHeight;
+
+    canvas.width = windowSizeX;
+    canvas.height = windowSizeY;
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    let change = speed * updateTime;
+
+    myBoxes.forEach(function (boxInfo) {
+      boxInfo.positionX = boxInfo.positionX + change * boxInfo.directionX;
+      boxInfo.positionY = boxInfo.positionY + change * boxInfo.directionY;
+
+      if (boxInfo.positionX + sizeX > windowSizeX) {
+        boxInfo.directionX = -1;
+        playCollide();
+      }
+
+      if (boxInfo.positionX < 0) {
+        boxInfo.directionX = 1;
+        playCollide();
+      }
+
+      if (boxInfo.positionY + sizeY > windowSizeY) {
+        boxInfo.directionY = -1;
+        playCollide();
+      }
+
+      if (boxInfo.positionY < 0) {
+        boxInfo.directionY = 1;
+        playCollide();
+      }
+
+      ctx.drawImage(box, boxInfo.positionX, boxInfo.positionY, sizeX, sizeY);
+    });
+  }
+
+  addNewBox();
+  setInterval(update, updateTime);
+
+  canvas.addEventListener("click", addNewBox);
+</script>
