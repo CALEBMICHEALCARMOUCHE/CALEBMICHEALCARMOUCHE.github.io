@@ -76,7 +76,7 @@
          * If the box drifts off the screen, turn it around!
          */
 
-         let positionX = 5;
+         let positionX = 0;
         let score = 0;
         let speed = 10;
 
@@ -105,7 +105,7 @@
         function handleBoxClick() {
             score++ 
             changeBoxText(score)
-            speed += 3
+            speed = 3 * score + 10;
 
 
         }
