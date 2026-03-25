@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MULTIPLE BOUNCING BOXES</title>
+    <link rel="icon" type="image/x-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAk1BMVEUzX/////8wXf8sW/8oWf8hVf8jVv8TT/8QTv8dU/8XUf+MoP/T2v+ruf/Gz//h5v+brP9sh/9xi//By/9Vdv9ohP86ZP81Yf/4+v/b4f+7xv/t8P9Fa/95kf+Bl/91jv+xvv/z9f+Upv+ltP/n6//Q1/+fr/+WqP9dfP9McP+Alv9Zef9igP/Ezf/W3f+1wf8ARf+HvhJiAAAG4ElEQVR4nO2ci1rqOhCFoVdaREAQuShSQVRU2O//dCcpx60g0GS60gT2/A/g1/UZMlkrM6nVGIZhGIZhGIZhGIZhGIZhGIaReLY/wDTeIEyCi1YZjuvPL2+NJLD9IcaIF3VB1pvexZF/if9Lb1D/YjG7CdPIt/1FaIJm/SfrZb9xYT/L5LO+x/C6OWiEl7NgG8N9hZLJ5iG4kAXr9w8JzBnNP+ILWLBB56hCyfPTfSM87zqSXJ1UKMjGq1p8xgs2LhKY027dpme6YP1bJYWSq85Z1pGopaxQMPxsDs7t4BO3dRRKzu3g4+sKzFnP389lwQYrksK6PPicRx0RzqkEk7H7B5/GpIxCSbv14fKC9e7LCsxx2EAHTxCF9dxAO3nwSa5RCiWLWTd17WfZQArMccxA+69whfWtgY4dMdDR0oRCyWTzGLmwYNORKYUSBwy0F5kUmCMMdGzx4OPfGFdYlwefqW+rjkSzKhRK2q2uWLDVq9yG3VUhDHTlP8u7KgVKsooNdDCtWqFksXlMqqojSc+GQslo+VrJgm1kthTWtwZa1BGjKr03iwJzJuOVUQMdvNhWKDEZxCbPttV9IQx0bMJAp7aF/UQaaDT+h21Ve8DLpF7YbZ5RChZYi406J33mEVohLew2xyu6agQPtiXt0QALrIUb25J2eU7QCsuH3Vie0PXwR5uQG9yja8Vem5B1MvjPEBt2l2ccohXGB9uE7DFF/wxPtAnZAazPZNhNox2jFaZr25p2aaGPbF5oW9IeXfSRze/alrQH3FdUF3arscY7J+02IbMs4c6pZlvSHn24c7ISdh9niHdO1sLuw1zjnVNmW9MuTbhzwrQJ4RjAnROsTQjDBH5ko4TdQ4NeZAN3Tinha6//3LZMFdEHuHOitAk1Az+Kg1UvQ8sTRPCwe074im2MEiTx20vh9IIm+LCb0ib0vRl4QZp0Z8gWB3jY7QWEr9iJUTyxYGvTzwyk8APunB4JX/F7MxALtr+E+Gh4rSCF3Qd3Oz9Ko5tN2QWLD7spbUJHYxS5YAfN6zLF8gV++UtpEzoZo3hiwb7PyXd1b06E3bdFm4FYsMHDhnIVkuGPbL9mYhVQqlhBQump7uF/hpn+V1ypfQXpShIednuUsLujVpNJ8zd3YIFFM7GHUYxRKFeSC3zYTThVDtUOjqQryRk8ZUsIX6EYo5B26Rv4kU19JvYbxRiFdCWZONEmpBijUK4k3Qi7FWMU0pUkPuwu7ZxO/GnKLv0OD7spM7GKMQppl8Y7J0pNVmtv9Qzu0hrEhJqseAFN2qXxbUKUsFvxApq0S+PbhChhd6Fz2mJwl9aAVpOV/nT5fAsCJey+UqvJJOe0gofd74Sv6Kh9BW2XBguktQkpOieDu7QGlDYhxZpMck74NiHXnJPiLq0OaSbWqHMCC6S1CRl0Toq7tAaUsHui1gdCck6Ku7QGlLBbsSZHpHwLfmSjtAkpOqfiN99+YyDsprQJKb46QxmD+3Qi7JbPJPnFU54m8y116DOxo3nRWDLJOeHD7jIzsQUPmlKcEz7sLj0Te+I9FopzwrcJqT0AWcB62T8wsEtyTo/wIxtqJlYs2P0now3mWxqQ2oSOsZh1w/T7EynOyY02oZOsO18T5qR8C98mZOI1oayXP61Dck7nMxPbbt3+ITgnxStJDUzOxFJaTw20CfFMbMXwTKw2rs3E9ngmVheeia0aN8Juk+DbhJx6Taj+L8zEhk60CRnEjTYhk/BMrDbOzcS60SZkEJ6J1YZnYqtG8UpSA3cegNyCD7vxT+eXw42ZWJPAH2SFht0ARnjn5NgDkPg2IdcegITPxNbupkYmzMnAfcX/E+bOVAx82J3jBUn6QZ/yRIKfif2LHEumTXlCgc/E7uAFYXxfbiy5LPiw+4DKJH7HzNFTwM/EHkQs2OQG+vCDMvCw+yhyjt5GHYG3CZ1GPvzQqbSO4NuECpE/S3NP6/wCH3YrIRasvxpXUkfgM7HqyDryZP6SEf6akBZywb6aPfjg24S0kQefx9LvsRzFQNhNwPPDeND8NHLwgc/EkhELttHvoF+8MvB0fin8KEm72DqCD7tLkx98xhlKIbxNCEMQNlAGGt4mBEP+LAEGGh92Q6E/k/QX/EwsnJIGGj4TawS5YKkG2pliWIhYsCHBQOPbhEySP0SnaaDhYbdx5IJ90zDQ8JnYSpBBrKqBPqtFuoNYsJ6CgVZ8881VxMFHGOiTdQQ/E1s1RQYa3iZkBXnwOWKg8U/n2+KYgcbPxNrkkIGGtwlZRx58fhpoeJuQC3g/DLSFsLsqZB0RBvoMnFMJxM8yvMhFusPFC2QYhmEYhmEYhmEYhmEYhmEYRf4DDPGSfYAR3RYAAAAASUVORK5CYII=">
+    <style>
+      img {
+        width: 80px;
+        height: 80px;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <img
+      id="diamond"
+      src="https://i.ytimg.com/vi/AzNb6KCok9o/sddefault.jpg"
+    />
+
+    <img
+      id="dirt"
+      src="https://filterforge.com/filters/11635.jpg"
+    />
+
+    <img 
+      id="brenda" 
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPQYLh18PoS56JFxuXyijDOAJO9zveeOPi0y40DT8Na2hSDr0:https://lookaside.fbsbx.com/lookaside/crawler/media/%3Fmedia_id%3D100000899593304&s"
+    />
+
+    <img 
+      id="burgerking" 
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSI44KMQ_zZz0hpJckPg3JYj5vsJuIKPj2oArOM4lesis3SZnN:https://i.pinimg.com/736x/49/02/64/49026489e6730781e1c007385c25b5bc.jpg&s"
+    />
+
+    <canvas id="canvas" height="10" width="10"></canvas>
+  </body>
+</html>
+<script>
+  const speed = 200; // in pixels
+  const updateTime = 1 / 60;
+
+  const sizeX = 200;
+  const sizeY = 200;
+
+  const speedMin = 100;
+  const speedMax = 300;
+
+  const clickSound = new Audio(
+    "https://commondatastorage.googleapis.com/codeskulptor-assets/Collision8-Bit.ogg",
+  );
+
+  let canvas = document.getElementById("canvas");
+  let ctx = canvas.getContext("2d");
+
+  let diamond = document.getElementById("diamond");
+  let dirt = document.getElementById("dirt")
+  let brenda = document.getElementById("brenda")
+  let burgerKing = document.getElementById("burgerking")
+
+  let myBoxes = [];
+
+  function getRandomInt(min, max) {
+    const minCeiled = Math.ceil(min);
+    const maxFloored = Math.floor(max);
+    return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled); 
+  }
+
+  function addNewBox() {
+    let newBox = {
+      directionX: 1,
+      directionY: 1,
+      positionX: window.innerWidth * Math.random(),
+      positionY: window.innerHeight * Math.random(),
+      speed: getRandomInt(speedMin, speedMax),
+      width: sizeX,
+      height: sizeY
+    };
+
+    if (Math.random() > 0.5) {
+      newBox.directionX = -1;
+    }
+
+    if (Math.random() > 0.5) {
+      newBox.directionY = -1;
+    }
+
+    let box = dirt 
+    let rand = Math.random()
+
+    if (rand < .1) {
+      box = brenda 
+    } else if (rand < .5) {
+      box = diamond
+    } else {
+      box = burgerKing 
+    }
+
+    newBox.boxElement = box 
+
+    myBoxes.push(newBox);
+  }
+
+  function playCollide() {
+    const clickSound = new Audio(
+      "https://commondatastorage.googleapis.com/codeskulptor-assets/Collision8-Bit.ogg",
+    );
+    clickSound.play();
+  }
+
+  function boxCollisions(box1, box2) {
+    let overlapX = box1.positionX + box1.width >= box2.positionX && box2.positionX + box2.width >= box1.positionX
+    let overlapY = box1.positionY + box1.height >= box2.positionY && box2.positionY + box2.height >= box1.positionY
+
+    if (overlapX && overlapY) {
+      box1.directionX = -box1.directionX
+      box1.directionY = -box1.directionY
+    }
+  }
+
+  function update() {
+    const windowSizeX = window.innerWidth;
+    const windowSizeY = window.innerHeight;
+
+    canvas.width = windowSizeX;
+    canvas.height = windowSizeY;
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    myBoxes.forEach(function (boxInfo) {
+      let change = boxInfo.speed * updateTime;
+
+      boxInfo.positionX = boxInfo.positionX + change * boxInfo.directionX;
+      boxInfo.positionY = boxInfo.positionY + change * boxInfo.directionY;
+
+      if (boxInfo.positionX + sizeX > windowSizeX) {
+        boxInfo.directionX = -1;
+        playCollide();
+      }
+
+      if (boxInfo.positionX < 0) {
+        boxInfo.directionX = 1;
+        playCollide();
+      }
+
+      if (boxInfo.positionY + sizeY > windowSizeY) {
+        boxInfo.directionY = -1;
+        playCollide();
+      }
+
+      if (boxInfo.positionY < 0) {
+        boxInfo.directionY = 1;
+        playCollide();
+      }
+
+      //myBoxes.forEach(function (collidingBox) {
+      //  boxCollisions(boxInfo, collidingBox)
+      //})
+
+      ctx.drawImage(boxInfo.boxElement, boxInfo.positionX, boxInfo.positionY, sizeX, sizeY);
+    });
+  }
+
+  for (i=0;i<676;i++) {
+      addNewBox()
+  }
+
+  setInterval(update, updateTime);
+
+  canvas.addEventListener("click", addNewBox);
+</script>
